@@ -8,7 +8,7 @@
 
 1、项目按目录结构放在 /opt 下
 
-2、/opt/fifo下的 cmd.sh cmd1.sh cmd2.sh 都添加开启在rc.local自动启动
+2、/opt/fifo下的 cmd.sh 都添加开启在rc.local自动启动
 
 	开启rc.local启动方法
 
