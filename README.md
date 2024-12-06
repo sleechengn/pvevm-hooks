@@ -14,7 +14,7 @@
 
   	使用  systemctl enable rc-local 命令启动rc.local启动
 	
-  	新建	 /etc/rc.local 写入启动  cmd.sh cmd1.sh cmd2.sh 脚本，注意跟&符号非阻塞执行
+  	新建	 /etc/rc.local 写入启动  cmd.sh 脚本，注意跟&符号非阻塞执行
 	
   	chmod +x /etc/rc.local 赋于执行权限
 	
