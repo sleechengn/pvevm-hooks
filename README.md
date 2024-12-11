@@ -27,7 +27,6 @@
   	新建	 /etc/rc.local ，在里面添加 /opt/fifo/cmd.sh
    
    		#!/usr/bin/bash
-     
      		/opt/fifo/cmd.sh &   
        
      	注意&符号非阻塞执行
