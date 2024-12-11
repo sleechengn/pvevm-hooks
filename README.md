@@ -29,10 +29,10 @@
 #!/usr/bin/bash
 /opt/fifo/cmd.sh &   
 ```       
-     	注意&符号非阻塞执行
-	
-  	chmod +x /etc/rc.local 赋于执行权限
-	
+注意&符号非阻塞执行
+```	
+  	chmod +x /etc/rc.local #赋于执行权限
+```	
   	重启电脑
    
 3、直通显卡，并设置hook
@@ -40,7 +40,7 @@
 	首先把 /opt/pvevm-hooks/vm-hook.sh 复制至 /var/lib/vz/snappets/	下，也就是local存储
 
   	将后在 /etc/pve/qemu-server/xxx.conf添加
-  	
-   	hookscript: local:snippets/vm-hook.sh
-	
+```  	
+hookscript: local:snippets/vm-hook.sh
+```	
  	这样钩子设置完成，虚拟机启动、关闭、进程退出时就是执行这个脚本的内容
