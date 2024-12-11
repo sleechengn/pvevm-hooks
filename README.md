@@ -25,10 +25,10 @@
   	使用  systemctl enable rc-local 命令启用开机启动 /etc/rc.local
 	
   	新建	 /etc/rc.local ，在里面添加 /opt/fifo/cmd.sh
-   
-   		#!/usr/bin/bash
-     		/opt/fifo/cmd.sh &   
-       
+```
+#!/usr/bin/bash
+/opt/fifo/cmd.sh &   
+```       
      	注意&符号非阻塞执行
 	
   	chmod +x /etc/rc.local 赋于执行权限
