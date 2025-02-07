@@ -9,7 +9,5 @@ tail --pid=$vmxPID -f /dev/null
 
 stat="post-stop"
 echo "VM $VMID proc is exit" $(date "+%Y-%m-%d %H:%M:%S") >> $(dirname $0)/$VMID-hooks.log
-
 $(dirname $0)/vm-stop.sh $VMID $stat
 
-#echo $cmd >> /tmp/cmd1.fifo
