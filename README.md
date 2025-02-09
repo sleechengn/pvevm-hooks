@@ -80,5 +80,5 @@ curl -k -v -X POST -b "PVEAuthCookie=$ticket" -H "CSRFPreventionToken: $csrf_tok
 启动方法
 
 ```
-vm-start xxxVMID
+vm-start.sh xxxVMID
 ```
