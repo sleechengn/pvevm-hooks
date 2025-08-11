@@ -1,10 +1,12 @@
-已经应用于 8.2、7.4	
+已经应用于 8.x、7.4、9.x
 
-本项目适用于安装了NVIDIA官方驱动的的N卡，并适用安装了GNOME桌面的PVE系统
+本项目适用于安装了NVIDIA官方驱动的的N卡，并适用安装了GNOME桌面的PVE系统，以及未安装GNOME桌面
 
 使用效果：
 
 虚拟机开机，GNOME桌面自动退出，开启虚拟机。虚拟机关机以后自动启动GNOME到桌面
+
+1、（可选）可以安装GNOME
 
 安装GNOME桌面方法
 
@@ -13,16 +15,16 @@
 	tasksel
 	#然后选择桌面和GNOME
 ```
-本脚本原始使用Perl语言编写，我将其改成了SHELL脚本，让普通Linux运维更好的去操作
-
 开启虚拟机前自动关闭GDM等桌面服务，并将显卡绑定在vfio模块以供虚拟机使用
 
-适用于NVIDIA显卡
+适用于NVIDIA显卡，并安装了官方驱动
+
+2、本项目安装
 
 安装方法：
 
 ```
-git clone https:.....本git
+git clone https://github.com/sleechengn/pvevm-hooks
 cd pvevm-hooks
 chmod 755 install-hook.sh
 ./install-hook.sh <虚拟机编号>   
@@ -30,7 +32,7 @@ chmod 755 install-hook.sh
 
 这样钩子设置完成，虚拟机启动、关闭、进程退出时就是执行这个脚本的内容
 
-可以建建立桌面图标，然后用我提供的.sh脚本来启动
+3、（可选）可以建建立桌面图标，然后用我提供的.sh脚本来启动
 
 vm-start.sh
 
