@@ -5,9 +5,17 @@ SELECT="$2"
 
 echo "VM $VMID is $SELECT " > $(dirname $0)/$VMID-hooks.log
 
+# device pice no
+# 0000:01:00.0
 v_no=$(lspci -nn -D|grep NVIDIA|grep VGA|awk '{print $1}'|xargs -i lspci -s {} -n -D|awk '{print $1}')
+
+# device vid space split
+# 10de 2414
 v_id=$(lspci -nn -D|grep NVIDIA|grep VGA|awk '{print $1}'|xargs -i lspci -s {} -n -D|awk '{print $3}')
 v_id="$(echo $v_id|cut -c 1-4) $(echo $v_id|cut -c 6-9)"
+
+# driver
+# nvidia
 v_dv=$(lspci -k -s $v_no|grep "Kernel driver in use"|awk '{print $5}')
 
 a_no=$(lspci -nn -D|grep NVIDIA|grep Audio|awk '{print $1}'|xargs -i lspci -s {} -n -D|awk '{print $1}')
