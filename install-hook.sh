@@ -1,8 +1,8 @@
 #!/usr/bin/bash
 INSTALLPATH=$(realpath $(dirname $0))
 
-if [ ! -e "/var/lib/vz/snippets" ]; then
-    mkdir -p /var/lib/vz/snippets
+if [ ! -e "$INSTALLPATH/vz/snippets" ]; then
+    mkdir -p $INSTALLPATH/vz/snippets
 fi
 
 if [ ! -e "/etc/systemd/system/fifo.service" ]; then
@@ -28,16 +28,19 @@ systemctl start fifo.service &
 
 fi
 
-cat > /var/lib/vz/snippets/pvevm-hooks-nv.sh <<EOF
+cat > $INSTALLPATH/vz/snippets/pvevm-hooks-nv.sh <<EOF
 #!/usr/bin/bash
 $INSTALLPATH/pvevm-hooks/vm-hook.sh \$*
 EOF
 
-chmod +x /var/lib/vz/snippets/pvevm-hooks-nv.sh
+chmod +x $INSTALLPATH/vz/snippets/pvevm-hooks-nv.sh
 chmod +x $INSTALLPATH/pvevm-hooks/*.sh
 
 if [ "$1" ]; then
-    qm set $1 --hookscript local:snippets/pvevm-hooks-nv.sh
+    if [ ! "$(pvesm status|sed '1d'|awk '{print $1}'|grep -x pvevm-hooks-n)" ]; then
+        pvesm add dir pvevm-hooks-n --content snippets --path $INSTALLPATH/vz
+    fi
+    qm set $1 --hookscript pvevm-hooks-n:snippets/pvevm-hooks-nv.sh
     else
     echo "useage: ./install-hook.sh <vmid>"
 fi
